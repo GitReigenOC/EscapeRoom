@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Java.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <section id="floorCard" class="floor-card" aria-labelledby="floorName">
+            <span class="floor-piece" aria-hidden="true"></span>
+            <span class="floor-piece" aria-hidden="true"></span>
+            <span class="floor-piece" aria-hidden="true"></span>
+            <span class="floor-piece" aria-hidden="true"></span>
+
+            <h1 id="floorName"></h1>
+            <p id="floorClue"></p>
+            <form id="passcodeForm">
+                <label for="passcodeInput">Enter the passcode:</label>
+                <input id="passcodeInput" name="passcode" type="text" inputmode="numeric" autocomplete="off" required>
+                <button type="submit">Unlock floor</button>
+            </form>
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+        </section>
+    </main>
+</body>
+</html>
