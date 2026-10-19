@@ -89,6 +89,20 @@ body {
 .feedback {
   min-height: 1.6em;
   color: #f5c76c;
+  opacity: 0;
+}
+
+.feedback:not(:empty) {
+  animation: feedbackFadeIn 0.5s ease-in forwards;
+}
+
+@keyframes feedbackFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .floor-piece {

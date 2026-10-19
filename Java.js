@@ -13,7 +13,42 @@ const floors = [
         name: "Floor 3",
         cipher: "2345",
         passcode: "9012"
-    }
+    },
+    {
+        name: "Floor 4",
+        cipher: "6789",
+        passcode: "3456"
+    },
+    {
+        name: "Floor 5",
+        cipher: "8356",
+        passcode: "5023"
+    },
+    {
+        name: "Floor 6",
+        cipher: "7567",
+        passcode: "4234"
+    },
+    {
+        name: "Floor 7",
+        cipher: "4571",
+        passcode: "1248"
+    },
+    {
+        name: "Floor 8",
+        cipher: "2222",
+        passcode: "9999"
+    },
+    {
+        name: "Floor 9",
+        cipher: "5608",
+        passcode: "2375"
+    },
+    {
+        name: "Floor 10",
+        cipher: "4343",
+        passcode: "1010"
+    },
 ];
 
 const floorCard = document.getElementById("floorCard");
@@ -50,7 +85,7 @@ floorCard.addEventListener("animationend", (event) => {
         floorCard.classList.add("arriving");
     } else {
         floorName.textContent = "You escaped!";
-        floorClue.textContent = "All three floors are solved. Well done!";
+        floorClue.textContent = "All ten floors are solved. Well done!";
         passcodeForm.hidden = true;
         feedback.textContent = "";
         floorCard.classList.add("arriving");
