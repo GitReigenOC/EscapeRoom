@@ -6,8 +6,31 @@
     <title>Escape Room</title>
     <link rel="stylesheet" href="style.css">
     <script src="Java.js" defer></script>
+    <style>
+        .cipher-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: min(70vw, 500px);
+            opacity: 0.16;
+            pointer-events: none;
+            z-index: 0;
+            animation: cipher-rotate 40s linear infinite;
+        }
+
+        @keyframes cipher-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
+    <img class="cipher-background" src="CeaserCipher.png" alt="" aria-hidden="true">
     <main class="container">
         <section id="floorCard" class="floor-card" aria-labelledby="floorName">
             <span class="floor-piece" aria-hidden="true"></span>
@@ -25,5 +48,6 @@
             <p id="feedback" class="feedback" aria-live="polite"></p>
         </section>
     </main>
+
 </body>
 </html>

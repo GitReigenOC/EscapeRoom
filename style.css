@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+background-image {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #34434d, #202c35);
+}
+
 body {
   min-height: 100vh;
   margin: 0 auto;
@@ -26,6 +33,39 @@ body {
   background: linear-gradient(145deg, #34434d, #202c35);
   box-shadow: 0 1rem 3rem #0008;
   text-align: center;
+}
+
+.floor-card::before,
+.floor-card::after {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: min(88vw, 30rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(245 199 108 / 35%);
+  border-radius: 50%;
+  color: rgb(245 199 108 / 34%);
+  font-family: monospace;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  letter-spacing: 0.3em;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.floor-card::before {
+  content: "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
+  animation: cipherRotate 90s linear infinite;
+}
+
+.floor-card::after {
+  width: min(68vw, 23rem);
+  border-color: rgb(245 199 108 / 25%);
+  content: "D E F G H I J K L M N O P Q R S T U V W X Y Z A B C";
+  animation: cipherRotate 120s linear infinite reverse;
 }
 
 .floor-card h1,
@@ -217,6 +257,12 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes cipherRotate {
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
   }
 }
 
