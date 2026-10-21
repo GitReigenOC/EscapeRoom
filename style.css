@@ -324,3 +324,29 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Phones */
+@media (max-width: 600px) {
+  .floor-card {
+    padding: 1.5rem;
+  }
+
+  .floor-card::before,
+  .floor-card::after {
+    width: min(88vw, 20rem);
+    font-size: clamp(0.65rem, 3vw, 0.85rem);
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .floor-card {
+    padding: 2rem;
+  }
+
+  .floor-card::before,
+  .floor-card::after {
+    width: min(88vw, 25rem);
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+  }
+}
