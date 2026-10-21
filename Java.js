@@ -1,51 +1,51 @@
 const floors = [
     {
-        name: "Floor 1",
+        name: "Ward 01",
         cipher: "4567",
         passcode: "1234"
     },
     {
-        name: "Floor 2",
+        name: "Ward 02",
         cipher: "8901",
         passcode: "5678"
     },
     {
-        name: "Floor 3",
+        name: "Ward 03",
         cipher: "2345",
         passcode: "9012"
     },
     {
-        name: "Floor 4",
+        name: "Ward 04",
         cipher: "6789",
         passcode: "3456"
     },
     {
-        name: "Floor 5",
+        name: "Ward 05",
         cipher: "8356",
         passcode: "5023"
     },
     {
-        name: "Floor 6",
+        name: "Ward 06",
         cipher: "7567",
         passcode: "4234"
     },
     {
-        name: "Floor 7",
+        name: "Ward 07",
         cipher: "4571",
         passcode: "1248"
     },
     {
-        name: "Floor 8",
+        name: "Ward 08",
         cipher: "2222",
         passcode: "9999"
     },
     {
-        name: "Floor 9",
+        name: "Ward 09",
         cipher: "5608",
         passcode: "2375"
     },
     {
-        name: "Floor 10",
+        name: "Ward 10",
         cipher: "4343",
         passcode: "1010"
     },
@@ -64,7 +64,7 @@ function showFloor(index) {
     const floor = floors[index];
     floorName.textContent = floor.name;
     floorClue.textContent =
-        `Digit Caesar cipher: each digit was shifted forward by 3, wrapping after 9. Shift each digit back by 3 to find the passcode: ${floor.cipher}`;
+        `A note was left beside the ward lock. Its digits were shifted forward by 3, wrapping after 9. Shift each digit back by 3 to find the code: ${floor.cipher}`;
     passcodeInput.value = "";
     passcodeInput.disabled = false;
     passcodeForm.querySelector("button").disabled = false;
@@ -85,7 +85,7 @@ floorCard.addEventListener("animationend", (event) => {
         floorCard.classList.add("arriving");
     } else {
         floorName.textContent = "You escaped!";
-        floorClue.textContent = "All ten floors are solved. Well done!";
+        floorClue.textContent = "All ten ward locks are open. You found your way out of St. Agnes.";
         passcodeForm.hidden = true;
         feedback.textContent = "";
         floorCard.classList.add("arriving");
@@ -102,14 +102,14 @@ passcodeForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (passcodeInput.value.trim() !== floors[currentFloor].passcode) {
-        feedback.textContent = "That passcode is incorrect. Decode the clue and try again.";
+        feedback.textContent = "The code is incorrect. The ward remains sealed.";
         passcodeInput.select();
         return;
     }
 
     passcodeInput.disabled = true;
     passcodeForm.querySelector("button").disabled = true;
-    feedback.textContent = "Correct! The floor is breaking apart...";
+    feedback.textContent = "The lock clicks open. The ward door gives way...";
     floorCard.classList.add("breaking");
 });
 

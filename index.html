@@ -3,31 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room</title>
+    <title>St. Agnes Asylum - Escape Room</title>
     <link rel="stylesheet" href="style.css">
     <script src="Java.js" defer></script>
-    <style>
-        .cipher-background {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: min(70vw, 500px);
-            opacity: 0.16;
-            pointer-events: none;
-            z-index: 0;
-            animation: cipher-rotate 40s linear infinite;
-        }
-
-        @keyframes cipher-rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
 </head>
 <body>
     <img class="cipher-background" src="CeaserCipher.png" alt="" aria-hidden="true">
@@ -38,12 +16,13 @@
             <span class="floor-piece" aria-hidden="true"></span>
             <span class="floor-piece" aria-hidden="true"></span>
 
+            <p class="ward-label">St. Agnes Asylum <span aria-hidden="true">/</span> Restricted Records</p>
             <h1 id="floorName"></h1>
             <p id="floorClue"></p>
             <form id="passcodeForm">
-                <label for="passcodeInput">Enter the passcode:</label>
+                <label for="passcodeInput">Enter the ward lock code:</label>
                 <input id="passcodeInput" name="passcode" type="text" inputmode="numeric" autocomplete="off" required>
-                <button type="submit">Unlock floor</button>
+                <button type="submit">Unlock ward</button>
             </form>
             <p id="feedback" class="feedback" aria-live="polite"></p>
         </section>

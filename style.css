@@ -2,11 +2,18 @@
   box-sizing: border-box;
 }
 
-background-image {
+.cipher-background {
   position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(135deg, #34434d, #202c35);
+  top: 50%;
+  left: 50%;
+  width: min(120vmin, 2000px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  filter: sepia(1) saturate(1.8) hue-rotate(350deg) brightness(1.1);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+  animation: cipherRotate 90s linear infinite;
 }
 
 body {
@@ -15,12 +22,16 @@ body {
   display: grid;
   place-items: center;
   padding: 1.5rem;
-  background: #17212b;
-  color: #f4f1e8;
-  font-family: Verdana, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 34%, rgb(79 91 72 / 55%), transparent 43%),
+    linear-gradient(90deg, #0b100f 0%, #18211e 18%, #28322d 50%, #18211e 82%, #0b100f 100%);
+  color: #e5e3d5;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 .container {
+  position: relative;
+  z-index: 1;
   width: min(100%, 38rem);
 }
 
@@ -28,11 +39,33 @@ body {
   position: relative;
   overflow: hidden;
   padding: 2.5rem;
-  border: 2px solid #c49a56;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #34434d, #202c35);
-  box-shadow: 0 1rem 3rem #0008;
+  border: 1px solid #8e8668;
+  border-radius: 4px;
+  background: linear-gradient(
+    145deg,
+    rgb(39 49 44 / 89%),
+    rgb(23 30 27 / 91%)
+  );
+  box-shadow: 0 1rem 3rem #000b, inset 0 0 2rem rgb(0 0 0 / 18%);
   text-align: center;
+}
+
+.ward-label {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(190 182 145 / 35%);
+  color: #c3bda4;
+  font-family: Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ward-label span {
+  padding: 0 0.35rem;
+  color: #9b7652;
 }
 
 .floor-card::before,
@@ -47,7 +80,7 @@ body {
   aspect-ratio: 1;
   border: 1px solid rgb(245 199 108 / 35%);
   border-radius: 50%;
-  color: rgb(245 199 108 / 34%);
+  color: rgb(245 199 108 / 42%);
   font-family: monospace;
   font-size: clamp(0.75rem, 2.5vw, 1rem);
   letter-spacing: 0.3em;
@@ -58,14 +91,15 @@ body {
 
 .floor-card::before {
   content: "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
-  animation: cipherRotate 90s linear infinite;
+  animation: ringRotate 90s linear infinite;
 }
 
 .floor-card::after {
   width: min(68vw, 23rem);
-  border-color: rgb(245 199 108 / 25%);
-  content: "D E F G H I J K L M N O P Q R S T U V W X Y Z A B C";
-  animation: cipherRotate 120s linear infinite reverse;
+  border-color: rgb(245 199 108 / 28%);
+  color: rgb(245 199 108 / 34%);
+  content: "0 1 2 3 4 5 6 7 8 9";
+  animation: ringRotate 60s linear infinite reverse;
 }
 
 .floor-card h1,
@@ -76,7 +110,9 @@ body {
 
 .floor-card h1 {
   margin-top: 0;
-  color: #f5c76c;
+  color: #d7c991;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
 }
 
 .floor-card p {
@@ -103,20 +139,21 @@ body {
 .floor-card button {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid #b8a786;
-  border-radius: 5px;
+  border: 1px solid #8e927d;
+  border-radius: 3px;
   font: inherit;
 }
 
 .floor-card input {
-  color: #17212b;
+  background: #dedbc9;
+  color: #20251f;
   text-align: center;
 }
 
 .floor-card button {
-  border-color: #d6a94f;
-  background: #d6a94f;
-  color: #17212b;
+  border-color: #9d8a56;
+  background: #9d8a56;
+  color: #171b17;
   cursor: pointer;
   font-weight: 700;
 }
@@ -150,8 +187,8 @@ body {
   z-index: 2;
   width: 50%;
   height: 50%;
-  border: 1px solid #d6a94f;
-  background: linear-gradient(135deg, #53616a, #34434d);
+  border: 1px solid #8e8668;
+  background: linear-gradient(135deg, #414b40, #222b26);
   opacity: 0;
   pointer-events: none;
 }
@@ -261,6 +298,18 @@ body {
 }
 
 @keyframes cipherRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0turn);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+@keyframes ringRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0turn);
+  }
   to {
     transform: translate(-50%, -50%) rotate(1turn);
   }
